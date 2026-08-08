@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { SEVERITY_LEVELS, URGENCY_LEVELS } from "./types";
+import { SEVERITY_LEVELS, URGENCY_LEVELS } from "./types.ts";
 
 export const consultationInputSchema = z.object({
   symptoms: z

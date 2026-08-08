@@ -14,7 +14,7 @@ const RULES: RedFlagRule[] = [
     message: "Dolor en el pecho",
   },
   {
-    pattern: /no puedo respirar|dificultad (para )?respirar|falta de aire|ahogo|disnea/i,
+    pattern: /no puedo respirar|dificultad (para )?respirar|(falta|me falta)( el| de)? aire|ahog[oa]|disnea|me cuesta respirar/i,
     message: "Dificultad para respirar",
   },
   {
