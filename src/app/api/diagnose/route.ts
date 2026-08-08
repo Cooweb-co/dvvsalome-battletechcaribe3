@@ -1,12 +1,26 @@
 import { NextResponse } from "next/server";
 import { AiError, generateTriageReport, isAiConfigured } from "@/lib/ai";
 import { buildMockReport } from "@/lib/mock-report";
+import { checkRateLimit, getClientIdentifier } from "@/lib/rate-limit";
 import { consultationInputSchema } from "@/lib/schema";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
 
 export async function POST(request: Request) {
+  const limit = checkRateLimit(getClientIdentifier(request));
+  if (!limit.allowed) {
+    return NextResponse.json(
+      {
+        error: `Alcanzaste el límite de consultas. Probá de nuevo en ${limit.retryAfterSeconds} segundos.`,
+      },
+      {
+        status: 429,
+        headers: { "Retry-After": String(limit.retryAfterSeconds) },
+      },
+    );
+  }
+
   let body: unknown;
   try {
     body = await request.json();
