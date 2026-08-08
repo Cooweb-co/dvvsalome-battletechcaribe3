@@ -50,9 +50,15 @@ export default function HomePage() {
 
   return (
     <div className="min-h-dvh">
+      <a
+        href="#contenido"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:rounded-lg focus:bg-slate-900 focus:px-4 focus:py-2 focus:text-sm focus:text-white"
+      >
+        Saltar al contenido
+      </a>
       <Header />
 
-      <main className="mx-auto max-w-6xl px-6 pt-10 pb-16">
+      <main id="contenido" className="mx-auto max-w-6xl px-6 pt-10 pb-16">
         <section className="max-w-2xl">
           <span className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-brand-50 px-3 py-1 text-xs font-medium text-brand-700">
             Triaje asistido por IA
@@ -89,7 +95,11 @@ export default function HomePage() {
             />
           </div>
 
-          <div className="space-y-6 lg:sticky lg:top-24 lg:self-start">
+          <div
+            aria-live="polite"
+            aria-busy={loading}
+            className="space-y-6 lg:sticky lg:top-24 lg:self-start"
+          >
             {loading && <ReportSkeleton />}
             {!loading && error && (
               <ErrorAlert
