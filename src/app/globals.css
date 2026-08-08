@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #ecfdf7;
+  --color-brand-100: #d1fae8;
+  --color-brand-200: #a7f3d5;
+  --color-brand-300: #6ee7bf;
+  --color-brand-400: #34d3a5;
+  --color-brand-500: #14b88a;
+  --color-brand-600: #059674;
+  --color-brand-700: #04785f;
+  --color-brand-800: #065f4c;
+  --color-brand-900: #064e40;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: #f5f7fa;
+    background-image:
+      radial-gradient(60rem 40rem at 110% -10%, rgba(20, 184, 138, 0.14), transparent 60%),
+      radial-gradient(50rem 35rem at -10% 0%, rgba(56, 130, 246, 0.12), transparent 55%);
+    background-attachment: fixed;
+    color: #0f172a;
+  }
+
+  ::selection {
+    background-color: var(--color-brand-200);
+  }
+}
+
+@utility card {
+  border-radius: 1.25rem;
+  border: 1px solid rgb(226 232 240 / 0.9);
+  background-color: rgb(255 255 255 / 0.85);
+  backdrop-filter: blur(8px);
+  box-shadow:
+    0 1px 2px rgb(15 23 42 / 0.04),
+    0 12px 32px -18px rgb(15 23 42 / 0.25);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility animate-rise {
+  animation: rise 0.4s ease-out both;
+}
