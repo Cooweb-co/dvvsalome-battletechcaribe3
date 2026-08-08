@@ -1,4 +1,4 @@
-import type { Severity, Urgency } from "./types";
+import type { Severity, Urgency } from "./types.ts";
 
 export const DISCLAIMER =
   "Esta herramienta ofrece información orientativa generada por inteligencia artificial. No constituye un diagnóstico médico ni sustituye la valoración de un profesional de la salud. Ante síntomas graves o que empeoran, acudí a un servicio de urgencias.";

@@ -1,5 +1,5 @@
-import { DISCLAIMER, SEVERITY_META, URGENCY_META } from "./constants";
-import type { Consultation } from "./types";
+import { DISCLAIMER, SEVERITY_META, URGENCY_META } from "./constants.ts";
+import type { Consultation } from "./types.ts";
 
 /** Serializa el reporte a texto plano para copiar o imprimir y llevar a consulta. */
 export function reportToText(consultation: Consultation): string {
