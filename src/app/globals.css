@@ -44,6 +44,25 @@
     0 12px 32px -18px rgb(15 23 42 / 0.25);
 }
 
+@media print {
+  body {
+    background: white;
+  }
+
+  header,
+  footer,
+  form,
+  aside {
+    display: none !important;
+  }
+
+  .card {
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+}
+
 @keyframes rise {
   from {
     opacity: 0;

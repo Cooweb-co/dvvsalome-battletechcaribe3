@@ -1,6 +1,7 @@
 "use client";
 
 import { DisclaimerBanner } from "./DisclaimerBanner";
+import { ReportActions } from "./ReportActions";
 import { LIKELIHOOD_CLASS, SEVERITY_META, URGENCY_META } from "@/lib/constants";
 import type { Consultation } from "@/lib/types";
 
@@ -131,6 +132,10 @@ export function ReportView({
 
       <div className="mt-6">
         <DisclaimerBanner compact />
+      </div>
+
+      <div className="mt-4">
+        <ReportActions consultation={consultation} />
       </div>
     </article>
   );
