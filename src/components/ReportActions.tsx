@@ -7,7 +7,13 @@ import type { Consultation } from "@/lib/types";
 const BUTTON_CLASS =
   "inline-flex items-center gap-1.5 rounded-lg border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 transition hover:border-slate-300 hover:text-slate-900";
 
-export function ReportActions({ consultation }: { consultation: Consultation }) {
+export function ReportActions({
+  consultation,
+  onNewConsultation,
+}: {
+  consultation: Consultation;
+  onNewConsultation?: () => void;
+}) {
   const [copied, setCopied] = useState(false);
 
   async function handleCopy() {
@@ -82,6 +88,28 @@ export function ReportActions({ consultation }: { consultation: Consultation }) 
         </svg>
         Imprimir
       </button>
+
+      {onNewConsultation && (
+        <button
+          type="button"
+          onClick={onNewConsultation}
+          className="inline-flex items-center gap-1.5 rounded-lg bg-slate-900 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-slate-700"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-3.5 w-3.5"
+            aria-hidden
+          >
+            <path d="M12 5v14M5 12h14" />
+          </svg>
+          Nueva consulta
+        </button>
+      )}
     </div>
   );
 }

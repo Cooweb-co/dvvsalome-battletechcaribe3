@@ -23,6 +23,14 @@ export default function HomePage() {
   const [error, setError] = useState<string | null>(null);
   const [lastInput, setLastInput] = useState<ConsultationInput | null>(null);
 
+  function startNewConsultation() {
+    setActive(null);
+    setError(null);
+    const field = document.getElementById("symptoms");
+    field?.scrollIntoView({ behavior: "smooth", block: "center" });
+    field?.focus({ preventScroll: true });
+  }
+
   async function handleSubmit(input: ConsultationInput) {
     setLoading(true);
     setError(null);
@@ -108,7 +116,11 @@ export default function HomePage() {
               />
             )}
             {!loading && !error && active && (
-              <ReportView consultation={active} isDemo={isDemo} />
+              <ReportView
+                consultation={active}
+                isDemo={isDemo}
+                onNewConsultation={startNewConsultation}
+              />
             )}
             {!loading && !error && !active && <EmptyState />}
           </div>

@@ -25,9 +25,11 @@ function Section({
 export function ReportView({
   consultation,
   isDemo,
+  onNewConsultation,
 }: {
   consultation: Consultation;
   isDemo?: boolean;
+  onNewConsultation?: () => void;
 }) {
   const { report, input, createdAt } = consultation;
   const urgency = URGENCY_META[report.urgency];
@@ -135,7 +137,10 @@ export function ReportView({
       </div>
 
       <div className="mt-4">
-        <ReportActions consultation={consultation} />
+        <ReportActions
+          consultation={consultation}
+          onNewConsultation={onNewConsultation}
+        />
       </div>
     </article>
   );
