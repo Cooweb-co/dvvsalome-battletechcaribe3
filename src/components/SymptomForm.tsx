@@ -1,7 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { EmergencyAlert } from "./EmergencyAlert";
 import { SeveritySelector } from "./SeveritySelector";
+import { detectRedFlags } from "@/lib/red-flags";
 import type { ConsultationInput, Severity } from "@/lib/types";
 
 const MAX_CHARS = 1500;
@@ -26,6 +28,7 @@ export function SymptomForm({ onSubmit, loading }: Props) {
   const [touched, setTouched] = useState(false);
 
   const tooShort = symptoms.trim().length < MIN_CHARS;
+  const redFlags = useMemo(() => detectRedFlags(symptoms), [symptoms]);
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -80,6 +83,8 @@ export function SymptomForm({ onSubmit, loading }: Props) {
           {symptoms.length}/{MAX_CHARS}
         </span>
       </div>
+
+      <EmergencyAlert flags={redFlags} />
 
       <div className="mt-4 flex flex-wrap gap-2">
         {EXAMPLES.map((example) => (
