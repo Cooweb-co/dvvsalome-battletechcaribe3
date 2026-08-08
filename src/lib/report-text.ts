@@ -25,6 +25,9 @@ export function reportToText(consultation: Consultation): string {
   if (typeof input.age === "number") {
     lines.push(`Edad: ${input.age} años`);
   }
+  if (input.history) {
+    lines.push(`Antecedentes y medicación: ${input.history}`);
+  }
 
   lines.push(
     "",

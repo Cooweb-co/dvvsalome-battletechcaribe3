@@ -10,6 +10,7 @@ export const consultationInputSchema = z.object({
   severity: z.enum(SEVERITY_LEVELS),
   durationDays: z.number().int().min(0).max(3650).optional(),
   age: z.number().int().min(0).max(120).optional(),
+  history: z.string().trim().max(500).optional(),
 });
 
 export const possibleCauseSchema = z.object({

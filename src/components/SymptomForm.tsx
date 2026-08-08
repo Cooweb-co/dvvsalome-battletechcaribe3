@@ -25,6 +25,7 @@ export function SymptomForm({ onSubmit, loading }: Props) {
   const [severity, setSeverity] = useState<Severity>("moderado");
   const [durationDays, setDurationDays] = useState("");
   const [age, setAge] = useState("");
+  const [history, setHistory] = useState("");
   const [touched, setTouched] = useState(false);
 
   const tooShort = symptoms.trim().length < MIN_CHARS;
@@ -40,6 +41,7 @@ export function SymptomForm({ onSubmit, loading }: Props) {
       severity,
       durationDays: durationDays === "" ? undefined : Number(durationDays),
       age: age === "" ? undefined : Number(age),
+      history: history.trim() === "" ? undefined : history.trim(),
     });
   }
 
@@ -139,6 +141,26 @@ export function SymptomForm({ onSubmit, loading }: Props) {
             className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm focus:border-brand-500 focus:ring-4 focus:ring-brand-500/15 focus:outline-none disabled:opacity-60"
           />
         </div>
+      </div>
+
+      <div className="mt-4">
+        <label htmlFor="history" className="text-sm font-medium text-slate-800">
+          Antecedentes y medicación <span className="text-slate-400">· opcional</span>
+        </label>
+        <input
+          id="history"
+          type="text"
+          value={history}
+          disabled={loading}
+          maxLength={500}
+          onChange={(event) => setHistory(event.target.value)}
+          placeholder="Ej: hipertensión, tomo losartán"
+          className="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm placeholder:text-slate-400 focus:border-brand-500 focus:ring-4 focus:ring-brand-500/15 focus:outline-none disabled:opacity-60"
+        />
+        <p className="mt-1.5 text-xs text-slate-400">
+          Ayuda a afinar el análisis: condiciones crónicas, alergias o remedios que
+          tomás.
+        </p>
       </div>
 
       <button

@@ -11,6 +11,7 @@ export interface ConsultationInput {
   severity: Severity;
   durationDays?: number;
   age?: number;
+  history?: string;
 }
 
 export interface PossibleCause {
