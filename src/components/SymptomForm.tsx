@@ -46,7 +46,12 @@ export function SymptomForm({ onSubmit, loading }: Props) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="card p-6">
+    <form
+      onSubmit={handleSubmit}
+      autoComplete="off"
+      noValidate
+      className="card p-6"
+    >
       <div className="mb-5">
         <h2 className="text-lg font-semibold tracking-tight text-slate-900">
           Contanos qué sentís
@@ -62,6 +67,8 @@ export function SymptomForm({ onSubmit, loading }: Props) {
       </label>
       <textarea
         id="symptoms"
+        autoComplete="off"
+        data-1p-ignore
         value={symptoms}
         onChange={(event) => setSymptoms(event.target.value.slice(0, MAX_CHARS))}
         onBlur={() => setTouched(true)}
@@ -150,6 +157,8 @@ export function SymptomForm({ onSubmit, loading }: Props) {
         <input
           id="history"
           type="text"
+          autoComplete="off"
+          data-1p-ignore
           value={history}
           disabled={loading}
           maxLength={500}
