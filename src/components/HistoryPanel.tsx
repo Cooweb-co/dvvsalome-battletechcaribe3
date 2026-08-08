@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { SEVERITY_META, URGENCY_META } from "@/lib/constants";
+import { formatRelativeTime } from "@/lib/relative-time";
 import type { Consultation } from "@/lib/types";
 
 interface Props {
@@ -94,12 +95,9 @@ export function HistoryPanel({
                         <span
                           className={`h-1.5 w-1.5 rounded-full ${SEVERITY_META[item.input.severity].dot}`}
                         />
-                        {URGENCY_META[item.report.urgency].label}
-                        {" · "}
-                        {new Date(item.createdAt).toLocaleDateString("es-CO", {
-                          day: "2-digit",
-                          month: "short",
-                        })}
+                      {URGENCY_META[item.report.urgency].label}
+                      {" · "}
+                      {formatRelativeTime(item.createdAt)}
                       </p>
                     </button>
                     <button
